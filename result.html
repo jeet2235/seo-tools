@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SEO Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssS.css') }}">
+</head>
+<body>
+    <h1>SEO Analysis for {{ url }}</h1>
+
+    <nav>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <h2>Meta Tags</h2>
+    <p>Title: {{ result.meta_tags.title }}</p>
+    <p>Description: {{ result.meta_tags.description }}</p>
+
+    <h2>Keyword Density</h2>
+    <ul>
+    {% for keyword, density in result.keyword_density.items() %}
+        <li>{{ keyword }}: {{ density }}%</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Header Tags</h2>
+    {% for tag, content in result.headers.items() %}
+        <p><strong>{{ tag }}:</strong></p>
+        <ul>
+        {% for text in content %}
+            <li>{{ text }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <h2>Image Alt Tags</h2>
+    <ul>
+    {% for img in result.image_alt_tags %}
+        <li>Source: {{ img.src }} | Alt Text: {{ img.alt }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Word Count</h2>
+    <p>Total Words: {{ result.word_count }}</p>
+
+    <a href="/">Analyze Another URL</a>
+</body>
+</html>

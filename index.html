@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SEO Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssS.css') }}">
+</head>
+<body> 
+    <div class="center-container">
+    <h1>Real-Time SEO Analyzer</h1>
+   
+<nav>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a> 
+</nav>    
+    <form method="POST">
+        <input type="text" name="url" placeholder="Enter website URL" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</div>
+</body>
+</html>

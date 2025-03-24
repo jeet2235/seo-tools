@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssS.css') }}">
+</head>
+<body>
+    <h1>Welcome, {{ username }}</h1>
+
+    <nav>
+        <a href="/">Analyze New Website</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <h2>Your SEO Analysis History</h2>
+    <ul>
+        {% for result in results %}
+        <li>URL: {{ result.url }} | Title: {{ result.meta_title }} | Word Count: {{ result.word_count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
